@@ -1,0 +1,14 @@
+.main-container{
+  width: 300px;
+  padding: 20px;
+  background-color: darkgray;
+}
+
+.presentation-container{
+  width: 600px;
+}
+
+.presentation-container,
+.main-container{
+  margin: 0 auto;
+}

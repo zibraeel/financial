@@ -1,0 +1,46 @@
+<form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Main Limit</mat-label>
+        <input matInput type="text" formControlName="limit" required>
+    </mat-form-field>
+    
+    <div *ngIf="limit && limit.invalid && (limit.dirty || limit.touched)" class="alert">
+        <div *ngIf="limit && limit.errors && limit.errors.required">
+            Field is required.
+        </div>
+        <div *ngIf="limit && limit.errors && limit.errors.pattern">
+            Values can only be numerical.
+        </div>
+        <div *ngIf="limit && limit.errors &&  limit.errors.min">
+            Values cannot be negative.
+        </div>
+        <br>
+    </div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Main Retention</mat-label>
+        <input matInput type="text" formControlName="retention" required>
+    </mat-form-field>
+
+    <div *ngIf="retention && retention.invalid && (retention.dirty || retention.touched)" class="alert">
+        <div *ngIf="retention && retention.errors && retention.errors.required">
+            Field is required.
+        </div>
+        <div *ngIf="retention && retention.errors && retention.errors.pattern">
+            Values can only be numerical.
+        </div>
+        <div *ngIf="retention && retention.errors &&  retention.errors.min">
+            Values cannot be negative.
+        </div>
+        <br>
+    </div>
+
+    <br>
+
+    <button mat-raised-button disabled={{isDisabled()}} color="primary" type="submit" value="Submit">
+        Submit
+        <mat-spinner class="my-spinner" *ngIf="isLoading" color="accent" [diameter]="20"></mat-spinner>
+    </button> 
+    
+</form>
